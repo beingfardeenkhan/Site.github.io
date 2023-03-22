@@ -15,14 +15,7 @@ html {
     text-align: center;
 }
 
-h2 {
-    font-size: 20px;
-    /* line-height: 1.2; */
-    color:#03e9f4;
-    text-shadow: 4px 4px black;
-    text-align: center;
-    line-height: 5px;
-}
+
   .login-box {
     position: absolute;
     top: 50%;
