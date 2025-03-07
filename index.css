@@ -12,6 +12,23 @@
   background: #1ee5f3;
 }
 
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px); /* Start 100px above */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* End at the actual position */
+        opacity: 1;
+    }
+}
+
+#headline {
+    animation: slideDown 1.5s ease-out forwards;
+    text-align: center;
+    font-size: 2em; /* Adjust size if needed */
+}
+
 /* general styling */
 
 
