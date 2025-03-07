@@ -9,6 +9,63 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+    <!-- Left Rose Image -->
+    <img id="rose-left" src="rose.png" alt="Rose" 
+         style="position: fixed; bottom: 5vh; left: 5vw; 
+                width: 18vw; max-width: 150px; min-width: 80px; height: auto; 
+                animation: blink 5s infinite ease-in-out;">
+
+    <!-- Right Rose Image (Mirrored Properly) -->
+    <div style="position: fixed; bottom: 5vh; right: 5vw; transform: scaleX(-1);">
+        <img id="rose-right" src="rose.png" alt="Rose" 
+             style="width: 18vw; max-width: 150px; min-width: 80px; height: auto; 
+                    animation: blink 5s infinite ease-in-out;">
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music">
+        <source src="audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Play Button (Appears Only If Autoplay is Blocked) -->
+    <button id="play-music" 
+            style="position: fixed; bottom: 300px; left: 50%; transform: translateX(-50%);
+                   padding: 10px 20px; font-size: 16px; cursor: pointer; display: none;">
+        ▶ Play Music
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let music = document.getElementById("bg-music");
+            let playButton = document.getElementById("play-music");
+
+            // Try to autoplay music
+            let playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Autoplay was blocked, show the play button
+                    playButton.style.display = "block";
+                });
+            }
+
+            // If user clicks the play button, play music
+            playButton.addEventListener("click", function() {
+                music.play();
+                playButton.style.display = "none"; // Hide button after playing
+            });
+        });
+    </script>
+
+    <style>
+        @keyframes blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
     <div class="container">
         <h1 id="headline">🎉 The countdown to your special day has begun! Wishing you joy in advance! 💖🥳 </h1>
         <div id="countdown">
