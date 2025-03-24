@@ -29,13 +29,22 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Play Button (Appears Only If Autoplay is Blocked) -->
-   <button id="play-music" 
-        style="position: fixed; bottom: 10vh; left: 50%; transform: translateX(-50%);
-               padding: 12px 25px; font-size: 16px; cursor: pointer; display: none;
-               background: #1e90ff; color: white; border: none; border-radius: 10px; 
-               font-weight: bold; transition: 0.3s;">
-    ▶ Play Music
+    <!-- Play Music Button (Moved Slightly Up) -->
+<button id="play-music" 
+style="position: fixed; bottom: 20vh; left: 50%; transform: translateX(-50%);
+       padding: 12px 25px; font-size: 16px; cursor: pointer; display: none;
+       background: #1e90ff; color: white; border: none; border-radius: 10px; 
+       font-weight: bold; transition: 0.3s;">
+▶ Play Music
+</button>
+
+<!-- New Button to Open a New Page (Placed Below) -->
+<button id="next-page" onclick="window.location.href='birthday.html'"
+style="position: fixed; bottom: 12vh; left: 50%; transform: translateX(-50%);
+       padding: 12px 25px; font-size: 16px; cursor: pointer;
+       background: #ff8c00; color: white; border: none; border-radius: 10px; 
+       font-weight: bold; transition: 0.3s;">
+🎉 Click for an early surprise
 </button>
 
     <script>
