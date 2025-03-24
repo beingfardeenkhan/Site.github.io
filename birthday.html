@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Happy Birthday!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            font-family: 'Love Ya Like A Sister', cursive;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+        }
+        .book {
+            width: 360px;
+            height: 480px;
+            position: relative;
+            perspective: 1500px;
+            z-index: 2;
+        }
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #ffcc00;
+            text-align: center;
+            padding: 25px;
+            box-shadow: 10px 10px 50px rgba(255, 204, 0, 1);
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out, opacity 0.6s ease-in-out;
+            backface-visibility: hidden;
+            opacity: 0;
+            transform: rotateY(-90deg);
+            border-radius: 20px;
+        }
+        .visible {
+            opacity: 1;
+            transform: rotateY(0deg);
+            z-index: 1;
+        }
+        button {
+            margin-top: 40px;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        button:hover {
+            background: linear-gradient(90deg, #ff4b2b, #ff416c);
+        }
+        .last-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+        .rose-big img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: glow 1.5s infinite alternate;
+            border-radius: 10px;
+        }
+        .for-you {
+            font-size: 48px;
+            color: #ffcc00;
+            position: absolute;
+            top: 50px;
+            text-shadow: 4px 4px 10px rgba(255, 204, 0, 0.8);
+        }
+        .page h2 {
+            font-size: 52px;
+            color: #ffcc00;
+            text-shadow: 4px 4px 10px rgba(255, 204, 0, 0.8);
+        }
+
+        /* Emoji Rain Effect */
+        .emoji {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            100% { transform: translateY(100vh); opacity: 1; }
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px red); }
+            to { filter: drop-shadow(0 0 20px rgb(243, 239, 21)); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book">
+        <div class="page visible" id="page1">
+            <h2 >Advance Happy Birthday!</h2>
+            <p>Did you know? The moon, the sun, and even the stars have started complaining. They say it's unfair how you shine brighter than them without even trying! 😜✨</p>
+            <button onclick="flipPage('page1', 'page3')">Next ➡️</button>
+        </div>
+        <div class="page" id="page3">
+            <h2>Tu samajh rahi hai na?</h2>
+            <p>Tu mere liye koi choice nahi hai…  
+                Tu meri default setting hai…  
+                Jo bina kisi customization ke perfect hai…  
+                Tere bina na meri life ka program incomplete hai…  
+                Jaise semicolon ke bina code incomplete hota hai, waise hi tu meri life ke code ki last line hai…🌍💖</p>
+            <button onclick="flipPage('page3', 'page4')">Next ➡️</button>
+        </div>
+        <div class="page" id="page4">
+            <h2>Before You Go...</h2>
+            <p>The stars twinkle, the moon glows, and the sun shines... but none of them can match the way my heart skips a beat whenever I see you.🌙✨</p>
+            <button onclick="flipPage('page4', 'page5')">Next ➡️</button>
+        </div>
+        <div class="page" id="page5">
+            <h2>One question for you?</h2>
+            <p style="font-size: 25px;">💫 Are you a variable?</p>
+            <p>Because no matter how many times I update my life, you’re always the constant! 💕</p>
+            <button onclick="flipPage('page5', 'page6')">Final Surprise 🌹</button>
+        </div>
+        <div class="page last-page" id="page6">
+            <div class="for-you">For You</div>
+            <div class="rose-big">
+                <img src="https://images.unsplash.com/photo-1611784599736-0ab934a3245a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Beautiful Rose">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipPage(currentId, nextId) {
+            document.getElementById(currentId).classList.remove('visible');
+            setTimeout(() => {
+                document.getElementById(nextId).classList.add('visible');
+            }, 300);
+        }
+
+        // Create Emoji Rain Effect
+        function createEmojiRain() {
+            const emojis = ['🌹', '🌟', '💕'];
+            const numEmojis = 30;
+
+            for (let i = 0; i < numEmojis; i++) {
+                let emoji = document.createElement('div');
+                emoji.classList.add('emoji');
+                emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                emoji.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(emoji);
+            }
+        }
+
+        createEmojiRain();
+    </script>
+
+</body>
+</html>
