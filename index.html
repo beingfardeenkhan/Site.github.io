@@ -97,5 +97,41 @@ style="position: fixed; bottom: 10vh; left: 50%; transform: translateX(-50%);
      <!-- <h3>After Countdown Finishes Click the Below Button</h3><br><br> -->
       <!--  <a class="btn default" href="second.html" target="_blank">Let's celebrate</a> -->
       </div>
+
+    <style>
+        /* Emoji Rain Effect */
+        .emoji {
+            position: absolute;
+            font-size: 30px;
+            animation: fall linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            100% { transform: translateY(100vh); opacity: 1; }
+        }
+    </style>
+
+<script>
+    function createEmojiRain() {
+        const emojis = ['🌹', '🌟', '💕']; // Emoji options
+        const numEmojis = 30; // Total emojis
+
+        for (let i = 0; i < numEmojis; i++) {
+            let emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random fall speed
+            emoji.style.animationDelay = Math.random() * 2 + 's'; // Random delay
+            document.body.appendChild(emoji);
+        }
+    }
+
+    // Start emoji rain only on this page
+    document.addEventListener("DOMContentLoaded", createEmojiRain);
+</script>
+
 </body>
 </html>
