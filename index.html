@@ -133,5 +133,32 @@ style="position: fixed; bottom: 10vh; left: 50%; transform: translateX(-50%);
     document.addEventListener("DOMContentLoaded", createEmojiRain);
 </script>
 
+    <audio id="bg-music" loop>
+    <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let music = document.getElementById("bg-music");
+        let storedTime = localStorage.getItem("musicTime");
+        let isPlaying = localStorage.getItem("musicPlaying");
+
+        // Set previous time and play if it was playing before
+        if (storedTime) {
+            music.currentTime = parseFloat(storedTime);
+        }
+
+        if (isPlaying === "true") {
+            music.play();
+        }
+
+        // Save the playing state and time
+        music.onplay = () => localStorage.setItem("musicPlaying", "true");
+        music.onpause = () => localStorage.setItem("musicPlaying", "false");
+        music.ontimeupdate = () => localStorage.setItem("musicTime", music.currentTime);
+    });
+</script>
+
+
 </body>
 </html>
